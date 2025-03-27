@@ -1,12 +1,26 @@
-# SwiftUI-Combine
+//
+//  HomeViewModel.swift
+//  SwiftUI-Combine
+//
+//  Created by Ghoshit.
+//
 
-## Overview
-This project integrates SwiftUI with Combine for efficient asynchronous network requests using an API Manager and follows the MVVM architecture.
+import Foundation
+import Combine
 
-## Usage
-
-## GET Request example
-
+class HomeViewModel: ObservableObject {
+    
+    // MARK: - Variable(s)
+    
+    @Published var homeData: [HomeModel] = []
+    @Published var errorMessage: AlertMessage?
+    @Published var successMessage: AlertMessage?
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Api Method(s)
+    
+    func fetchData() {
         guard let url = URL(string: ApiURLS.getUsers) else {
             print("Invalid URL")
             return
@@ -20,12 +34,13 @@ This project integrates SwiftUI with Combine for efficient asynchronous network 
                 if case .failure(let error) = result {
                     self.errorMessage = AlertMessage(title: "Error", message: "\(error.message ?? "Something Went Wrong!")")
                 }
-            }, receiveValue: { [weak self] _ in
+            }, receiveValue: { [weak self] homeModel in
+                self?.homeData = homeModel
             })
             .store(in: &cancellables)
-
-## Post Request example 
-
+    }
+    
+    func sendData() {
         guard let url = URL(string: ApiURLS.registerUsers) else {
             print("Invalid URL")
             return
@@ -50,7 +65,5 @@ This project integrates SwiftUI with Combine for efficient asynchronous network 
                 self?.successMessage = AlertMessage(title: "Success", message: "User registered successfully!")
             })
             .store(in: &cancellables)
-
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+    }
+}
