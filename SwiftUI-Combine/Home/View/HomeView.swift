@@ -9,7 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel: HomeViewModel
+    
+    init() {
+        let apiManager = ApiManager()
+        _viewModel = StateObject(wrappedValue: HomeViewModel(apiManager: apiManager))
+    }
     
     var body: some View {
         NavigationView {

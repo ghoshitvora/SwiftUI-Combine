@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HomeModel: Decodable {
+struct HomeModel: Codable, Identifiable {
     var id: Int?
     var FirstName: String?
     var PhoneNumber: String?

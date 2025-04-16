@@ -22,6 +22,7 @@
 		73D335582D942040002A1894 /* ListDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D335572D942040002A1894 /* ListDataView.swift */; };
 		73D3355A2D94246D002A1894 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D335592D94246D002A1894 /* HomeListView.swift */; };
 		73D3355C2D9426EF002A1894 /* AddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3355B2D9426EF002A1894 /* AddButtonView.swift */; };
+		73ED66BD2DAFC0D0002915FD /* ApiManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED66BC2DAFC0C6002915FD /* ApiManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		73D335572D942040002A1894 /* ListDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataView.swift; sourceTree = "<group>"; };
 		73D335592D94246D002A1894 /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		73D3355B2D9426EF002A1894 /* AddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonView.swift; sourceTree = "<group>"; };
+		73ED66BC2DAFC0C6002915FD /* ApiManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		73D335412D93CA55002A1894 /* ApiManager */ = {
 			isa = PBXGroup;
 			children = (
+				73ED66BC2DAFC0C6002915FD /* ApiManagerProtocol.swift */,
 				73D335422D93CC32002A1894 /* ApiRequest.swift */,
 				73D3353F2D93CA3D002A1894 /* ApiNetworkError.swift */,
 				73D3353D2D93C8DA002A1894 /* ApiManager.swift */,
@@ -241,6 +244,7 @@
 				73D335392D93C509002A1894 /* SwiftUI_CombineApp.swift in Sources */,
 				73D3355A2D94246D002A1894 /* HomeListView.swift in Sources */,
 				73D3354E2D93DB4E002A1894 /* Enums.swift in Sources */,
+				73ED66BD2DAFC0D0002915FD /* ApiManagerProtocol.swift in Sources */,
 				73D335582D942040002A1894 /* ListDataView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

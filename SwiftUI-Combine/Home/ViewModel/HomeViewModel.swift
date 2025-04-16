@@ -16,7 +16,14 @@ class HomeViewModel: ObservableObject {
     @Published var errorMessage: AlertMessage?
     @Published var successMessage: AlertMessage?
     
+    private let apiManager: ApiManagerProtocol
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Init Methods(s)
+    
+    init(apiManager: ApiManagerProtocol) {
+        self.apiManager = apiManager
+    }
     
     // MARK: - Api Method(s)
     
@@ -28,7 +35,7 @@ class HomeViewModel: ObservableObject {
         
         let apiRequest = ApiRequest(withUrl: url, httpMethods: .GET)
         
-        ApiManager.shared.apiRequest(apiRequest, responseType: [HomeModel].self)
+        apiManager.apiRequest(apiRequest, responseType: [HomeModel].self)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { result in
                 if case .failure(let error) = result {
@@ -46,7 +53,7 @@ class HomeViewModel: ObservableObject {
             return
         }
         
-        let userData: [String: Any] = ["FirstName": "Johnson", "Email": "johnson3@gmail.com", "PhoneNumber": "568939-6410", "Vehicle": "Test1", "JobTitle": "Chief Mobility Liaison"]
+        let userData: [String: Any] = ["FirstName": "Johnson", "Email": "johnson4@gmail.com", "PhoneNumber": "568939-6410", "Vehicle": "Test1", "JobTitle": "Chief Mobility Liaison"]
         
         guard let jsonData = try? JSONSerialization.data(withJSONObject: userData, options: []) else {
                 print("Failed to encode JSON")
@@ -55,7 +62,7 @@ class HomeViewModel: ObservableObject {
         
         let apiRequest = ApiRequest(withUrl: url, httpMethods: .POST, requestBody: jsonData)
         
-        ApiManager.shared.apiRequest(apiRequest, responseType: HomeModel.self)
+        apiManager.apiRequest(apiRequest, responseType: HomeModel.self)
             .receive(on: DispatchQueue.main)
             .sink (receiveCompletion: { result in
                 if case .failure(let error) = result {

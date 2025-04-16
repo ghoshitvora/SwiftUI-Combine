@@ -11,8 +11,15 @@ struct HomeListView: View {
     let userData: [HomeModel]
     
     var body: some View {
-        List(userData, id: \.id) {item in
-            ListDataView(userItem: item)
+//        List(userData, id: \.id) {item in
+//            ListDataView(userItem: item)
+//        }
+//        .listStyle(PlainListStyle())
+//        .background(Color.clear)
+        List {
+            ForEach(userData) { data in
+                ListDataView(userItem: data)
+            }
         }
         .listStyle(PlainListStyle())
         .background(Color.clear)

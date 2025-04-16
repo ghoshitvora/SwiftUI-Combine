@@ -8,21 +8,12 @@
 import Foundation
 import Combine
 
-class ApiManager {
-    
-    // MARK: - Variable(s)
-    
-    static let shared = ApiManager()
-    
-    // MARK: - Init Method
-    
-    private init() {}
+class ApiManager:ApiManagerProtocol {
     
     // MARK: - API Method
     
     func apiRequest<T: Decodable>(_ request: ApiRequest, responseType: T.Type) -> AnyPublisher<T, ApiNetworkError> {
-        
-        var urlRequest = self.createApiUrlRequestWithHeader(request: request)
+        let urlRequest = self.createApiUrlRequestWithHeader(request: request)
         return performApiOperation(urlRequest, responseType)
     }
     
