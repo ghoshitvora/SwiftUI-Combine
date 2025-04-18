@@ -14,7 +14,7 @@ This project integrates SwiftUI with Combine for efficient asynchronous network 
         
         let apiRequest = ApiRequest(withUrl: url, httpMethods: .GET)
         
-        ApiManager.shared.apiRequest(apiRequest, responseType: [HomeModel].self)
+        apiManager.apiRequest(apiRequest, responseType: [HomeModel].self)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { result in
                 if case .failure(let error) = result {
@@ -40,7 +40,7 @@ This project integrates SwiftUI with Combine for efficient asynchronous network 
         
         let apiRequest = ApiRequest(withUrl: url, httpMethods: .POST, requestBody: jsonData)
         
-        ApiManager.shared.apiRequest(apiRequest, responseType: HomeModel.self)
+        apiManager.apiRequest(apiRequest, responseType: HomeModel.self)
             .receive(on: DispatchQueue.main)
             .sink (receiveCompletion: { result in
                 if case .failure(let error) = result {
